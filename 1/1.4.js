@@ -1,0 +1,6 @@
+let firstName= prompt("Денис")
+console.log(firstName)
+let middleName=prompt("Євгенійович")
+console.log(middleName)
+let data = prompt("2005")
+console.log(data)

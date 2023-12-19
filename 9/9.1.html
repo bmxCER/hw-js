@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>9.1</title>
+</head>
+<body>
+
+<script>
+    // - створити блок,
+    let block = document.createElement('div')
+
+    // - додати йому класи wrap, collapse, alpha, beta
+    block.classList.add( 'wrap', 'collapse', 'alpha', 'beta')
+
+    // - додати стилі(довільні значення) : колір фону, колір тексту, розмір тексту
+    block.style.backgroundColor = 'cian'
+    block.style.color = 'red'
+    block.style.textAlign= '30'
+    block.innerHTML = 'block'
+
+    // - додати цей блок в body.
+    document.body.appendChild(block)
+
+    // - клонувати його повністю, та додати клон в body.
+    let blockClone = block.cloneNode(true)
+    document.body.appendChild(blockClone)
+
+    // - Є масив:
+    let array = ['Main','Products','About us','Contacts']
+
+    // - Зробити ul в середині якої будуть лежати елементи масиву (кожен в своєму li)
+    let ul = document.createElement('ul')
+    for (text of array){
+        let li = document.createElement('li')
+        li.innerText = text
+        ul.appendChild(li)
+    }
+    document.body.appendChild(ul)
+
+    // - Є масив
+    let coursesAndDurationArray = [
+        {title: 'JavaScript Complex', monthDuration: 5},
+        {title: 'Java Complex', monthDuration: 6},
+        {title: 'Python Complex', monthDuration: 6},
+        {title: 'QA Complex', monthDuration: 4},
+        {title: 'FullStack', monthDuration: 7},
+        {title: 'Frontend', monthDuration: 4}
+    ]
+
+    // - Для кожного елементу масиву зробити блок в якому вивести інформацію про title та monthDuration
+    let courseBlock
+    for (courseBlock of coursesAndDurationArray){
+        let div = document.createElement('div')
+        let title = document.createElement('p')
+        title.innerText = courseBlock.title
+        div.appendChild(title)
+        let month = document.createElement('p')
+        month.innerText = courseBlock.monthDuration
+        div.appendChild(month)
+        document.body.appendChild(div)
+    }
+</script>
+</body>
+</html>

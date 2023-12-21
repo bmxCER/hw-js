@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>10.6</title>
+</head>
+<body>
+
+<form name = 'f1'>
+    <input type="number" placeholder="age" id= 'ageInput' name="age">
+    <input type="submit" name="submitBtn">
+</form>
+<p id="text"></p>
+<script>
+    // - створити інпут який приймає вік людини та кнопку яка підтверджує дію.При натисканні на кнопку зчитати інформацію з інпуту та перевірити вік чи меньше він ніж 18, та повідомити про це користувача
+    let ageInput = parseInt(document.forms['age'].value)
+    form.addEventListener('submit', function (ev){
+        ev.preventDefault()
+        if (ageInput < 18){
+            text.innerText = 'Вік менше 18'
+        } else {
+            text.innerText = 'Вік більше 18'
+        }
+    })
+</script>
+</body>
+</html>

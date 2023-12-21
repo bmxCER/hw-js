@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>10.4</title>
+</head>
+<body>
+
+<form>
+    <button id="prev">prev</button>
+    <button id="next">next</button>
+</form>
+<script>
+    // зробити масив на 100 об'єктів та дві кнопки prev next
+    let array = []
+    for (let i = 1; i<=100; i++){
+        let object = `number - ${i}`
+        array.push(object)
+    }
+    console.log(array)
+    // при завантажені сторінки з'являються перші 10 об'єктів.
+    document.addEventListener("DOMContentLoaded", function (){
+        indexes(0,10)
+    })
+    function indexes(index1, index2) {
+        for (let index = index1; index<index2; index++){
+            let div = document.createElement('div')
+            div.innerText = array[index]
+            document.body.appendChild(div)
+
+        }
+    }
+
+    // При натисканні next виводяться наступні 10 об'єктів
+    let next = document.getElementById('next')
+    let nowIndex = 10
+    next.onclick = function (ev) {
+        ev.preventDefault()
+        let nextTen = nowIndex + 10
+        indexes(nowIndex, nextTen)
+        nowIndex = nextTen
+        return indexes
+    }
+
+    // При натисканні prev виводяться попередні 10 об'єктів
+    let prev = document.getElementById('prev')
+    let currentIndex = nowIndex
+    prev.onclick = function (ev) {
+        ev.preventDefault()
+        let prevTen = currentIndex - 10
+        if (prevTen >= 0){
+            indexes(prevTen, currentIndex)
+            currentIndex = prevTen;
+            return indexes
+        }else {
+            indexes(0, 10)
+            currentIndex = 0
+        }
+    }
+
+</script>
+</body>
+</html>

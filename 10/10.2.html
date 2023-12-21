@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>10.2</title>
+</head>
+<body>
+<div id="div"></div>
+<script>
+    // є сторінка, на якій є блок, я кому знаходиьтся цифра. написати код, який при кожному перезавантажені сторінки буде додавати до неї +1
+    let divStorage = JSON.parse(localStorage.getItem('n') || 0)
+    let div = document.getElementById('div')
+    div.innerText = divStorage
+    document.body.appendChild(div)
+    divStorage++
+    localStorage.setItem('n', divStorage)
+
+</script>
+</body>
+</html>

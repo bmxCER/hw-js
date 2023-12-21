@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>10.5</title>
+</head>
+<body>
+<div id = "text">Element</div>
+<form name="f1">
+    <button id="delete">delete</button>
+</form>
+
+<script>
+    // - Створити довільний елемент з id = text та створити кнопку.Використовуючи JavaScript, зробіть так, щоб при натисканні на кнопку зникав елемент з id="text".
+    let text = document.getElementById('text')
+    let button = document.getElementById('delete')
+
+    button.addEventListener('click', function (ev){
+        ev.preventDefault()
+        text.innerText = ' '
+    })
+</script>
+</body>
+</html>

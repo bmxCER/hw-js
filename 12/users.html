@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    // з ендпоінту http://jsonplaceholder.typicode.com/users отримати всіх користувачів
+    // вивести їх id + name списком та додати посилання з href
+    fetch('http://jsonplaceholder.typicode.com/users')
+        .then(value => value.json())
+        .then(users => {
+
+            for (const user of users){
+                let ul = document.createElement('ul')
+                let li = document.createElement('li')
+                let a = document.createElement('a')
+                a.innerText = `${user.id} ${user.name}`
+                a.href = './user-details.html?id=' + JSON.stringify(user.id)
+                li.appendChild(a)
+                ul.appendChild(li)
+                document.body.appendChild(ul)
+            }
+        })
+</script>
+</body>
+</html>

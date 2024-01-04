@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    // при кліку на посилання перехід на відповідну сторінку, на якій буде вся інформація про користувача (всі 15 полів) отримана через додатковий запит
+    let url = new URL(location.href)
+
+    let userId = url.searchParams.get('id')
+    fetch(`http://jsonplaceholder.typicode.com/users/${userId}`)
+        .then(value => value.json())
+        .then(user =>{
+            console.log(user)
+            let div = document.createElement('div')
+
+            let h1 = document.createElement('h1')
+            h1.innerText = `${user.id} ${user.name}`
+
+            let pPhone = document.createElement('p')
+            pPhone.innerText = `Phone: ${user.phone}`
+
+            let pUsername = document.createElement('p')
+            pUsername.innerText = `Username: ${user.username}`
+
+            let pWebsite = document.createElement('p')
+            pWebsite.innerText = `Website: ${user.website}`
+
+            let pEmail = document.createElement('p')
+            pEmail.innerText = `Email: ${user.email}`
+
+            let pAddress = document.createElement('p');
+            pAddress.innerText = `Address: ${user.address.street}, ${user.address.suite}, ${user.address.city}, ${user.address.zipcode}`;
+
+            let pGeo = document.createElement('p');
+            pGeo.innerText = `Geo: Lat ${user.address.geo.lat}, Lng ${user.address.geo.lng}`;
+
+            let pCompany = document.createElement('p');
+            pCompany.innerText = `Company: ${user.company.name}, ${user.company.catchPhrase}, ${user.company.bs}`;
+
+            div.append(h1, pPhone, pUsername, pAddress, pGeo, pEmail, pCompany, pWebsite)
+            document.body.appendChild(div)
+        })
+
+
+</script>
+</body>
+</html>

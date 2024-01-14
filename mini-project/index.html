@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+    <style>
+        #main{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            width: 40vw;
+        }
+    </style>
+</head>
+<body>
+<div id="main">
+</div>
+<script>
+  fetch('http://jsonplaceholder.typicode.com/users')
+      .then(value => value.json())
+      .then(users => {
+          let divMain = document.getElementById('main')
+
+          for (const user of users) {
+              let h3 = document.createElement('h3')
+              h3.innerText = `${user.id} ${user.name}`
+
+              let button = document.createElement('button')
+              button.innerText = `details`
+              button.className = 'info-button'
+              button.onclick = function (ev) {
+                  ev.preventDefault()
+                  window.location.href = './user-details.html?id=' + JSON.stringify(user.id)
+              }
+
+              let div = document.createElement('div')
+              div.appendChild(h3)
+              div.appendChild(button)
+
+              divMain.appendChild(div)
+          }
+      })
+</script>
+</body>
+</html>
